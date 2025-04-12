@@ -351,9 +351,9 @@ MonoBehaviour:
   currentState: 0
   bulletInimigoPrefab: {fileID: 1455166434725585018, guid: c0c500f8616b1e046997cea677beb5ad, type: 3}
   bulletInimigoSpawn: {fileID: 4869668922294595826}
-  bulletInimigoSpeed: 1
+  bulletInimigoSpeed: 3
   bulletDamage: 1
-  fireRate: 0.5
+  fireRate: 2
   rayStartPos: {x: 0, y: 0, z: 0}
   rayEndPos: {x: 0, y: 0, z: 0}
 --- !u!114 &3622333796218372003

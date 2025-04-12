@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.AI.Navigation;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(vida))]
 public class inimigoComDeteccaoCollider : MonoBehaviour
 {
-    public Transform alvo;
+    [SerializeField] private GameObject target;
     private NavMeshAgent agente;
 
     [SerializeField] NavMeshSurface surface;
@@ -24,12 +23,7 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
     private enum States {Patrol, Follow, Fire};
     [SerializeField] private States currentState;
 
-    private List<Transform> enemiesDetected;
-
-    private bool canFire = false;
     private bool turnTowardTarget = false;
-
-    //-------- Bullet/Fire ------------------------
 
     public GameObject bulletInimigoPrefab;
     public Transform bulletInimigoSpawn;
@@ -38,9 +32,6 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
 
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
-    private Ray los;
-    private RaycastHit los_hit;
-    private bool hasLos = false;
 
     [SerializeField] Vector3 rayStartPos;
     [SerializeField] Vector3 rayEndPos;
@@ -50,19 +41,12 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
     {
         agente = GetComponent<NavMeshAgent>();
         detectionCollider.radius = detectionRange;
-        enemiesDetected = new List<Transform>();
+        target = null;
         currentState = States.Patrol;
     }
 
-
     void Update()
     {
-        if(enemiesDetected.Count > 0 && enemiesDetected[0] == null)
-        {
-            enemiesDetected.Clear();
-            SetBoolsToFalse();
-            currentState = States.Patrol;
-        }
         switch(currentState)
         {
             case States.Patrol:
@@ -75,23 +59,16 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
                 FireBehaviour();
                 break;
         }
-        
     }
 
     void FixedUpdate()
-    {
-        if (canFire)
+    { 
+        if (target != null)
         {
-            InvokeRepeating("FireInimigo", 0.2f, 3f);
-        }
-        else
-        {
-            CancelInvoke("FireInimigo");
-        }
-
-        if(turnTowardTarget)
-        {
-            RotateAgent();
+            if (turnTowardTarget)
+            {
+                RotateAgent();
+            }
         }
     }
 
@@ -112,7 +89,7 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
 
     private void PatrolBehaviour()
     {
-        if (enemiesDetected.Count > 0)
+        if (target != null)
         {
             currentState = States.Follow;
         }
@@ -128,77 +105,57 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
 
     private void FollowBehaviour()
     {
-        if (enemiesDetected.Count == 0)
+        if (target == null)
         {
             currentState = States.Patrol;
         }
         else
         {
-            alvo = enemiesDetected[0];
-            if(alvo != null)
-            {
-                agente.SetDestination(alvo.position);
+            agente.SetDestination(target.transform.position);
             
-                if (Vector3.Distance(transform.position, alvo.position) <= firingDistance)
-                {
+            if (Vector3.Distance(transform.position, target.transform.position) <= firingDistance)
+            {
                     currentState = States.Fire;
-                }
             }
         }
     }
 
     private void FireBehaviour()
     {
-        if(CheckRaycastHit() == "Inimigo")
+        if(target == null)
         {
-            hasLos = true;
+            SetBoolsToFalse();
+            currentState = States.Patrol;
         }
         else
         {
-            hasLos = false;
-        }
-        if (Vector3.Distance(transform.position, alvo.position) > firingDistance || !hasLos)
-        {
-            currentState = States.Follow;
-            canFire = false;
-            turnTowardTarget = false;
-        }
-        else
-        {
-            agente.isStopped = true;
-            canFire = true;
-            turnTowardTarget = true;
+            if (Vector3.Distance(transform.position, target.transform.position) > firingDistance)
+            {
+                currentState = States.Follow;
+                CancelInvoke("FireInimigo");
+                turnTowardTarget = false;
+                agente.isStopped = false;
+            }
+            else
+            {
+                agente.isStopped = true;
+                InvokeRepeating("FireInimigo", 0.2f, 3f);
+                turnTowardTarget = true;
+            }
         }
     }
 
     private void SetBoolsToFalse()
     {
-        alvo = null;
+        target = null;
         CancelInvoke("FireInimigo");
-        canFire = false;
         turnTowardTarget = false;
-        hasLos = false;
-    }
-
-    private String CheckRaycastHit()
-    {
-        rayStartPos = new Vector3(transform.position.x, 0.5f, transform.position.z);
-        rayEndPos = new Vector3(alvo.transform.position.x - transform.position.x, 0.5f, alvo.transform.position.z - transform.position.z);
-        los = new Ray(rayStartPos, rayEndPos);
-        if (Physics.Raycast(los, out los_hit))
-        {
-            //Debug.Log(los_hit.collider.gameObject.name);
-            return los_hit.collider.gameObject.tag;
-        }
-        else
-        {
-            return "no_collision";
-        }
+        agente.isStopped = false;
     }
 
     private void RotateAgent()
     {
-        Vector3 newDir = alvo.position - transform.position;
+        Vector3 newDir = target.transform.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(newDir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate);
     }
@@ -213,20 +170,20 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
         return finalMeshPosition;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Inimigo")
+        if (target == null && other.gameObject.tag == "Inimigo")
         {
-            enemiesDetected.Add(other.transform);
+            target = other.gameObject;
         }
     }
 
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Inimigo")
-    //    {
-    //        enemiesDetected.Remove(other.transform);
-    //    }
-    // }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Inimigo" && other.gameObject == target.gameObject)
+        {
+            target = null;
+        }
+    }
 
 }
