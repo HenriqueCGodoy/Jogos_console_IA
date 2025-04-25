@@ -1,5 +1,5 @@
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,6 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(vida))]
 public class inimigoComDeteccaoCollider : MonoBehaviour
 {
+    [SerializeField] private List<String> targetTags;
     [SerializeField] private GameObject target;
     private NavMeshAgent agente;
 
@@ -32,9 +33,6 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
 
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
-
-    [SerializeField] Vector3 rayStartPos;
-    [SerializeField] Vector3 rayEndPos;
 
     // Start is called before the first frame update
     void Start()
@@ -172,15 +170,22 @@ public class inimigoComDeteccaoCollider : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (target == null && other.gameObject.tag == "Inimigo")
+        if (target == null)
         {
-            target = other.gameObject;
+            foreach (String tag in targetTags)
+            {
+                if (other.gameObject.tag == tag)
+                {
+                    target = other.gameObject;
+                    break;
+                }
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Inimigo" && other.gameObject == target.gameObject)
+        if (target != null && other.gameObject == target.gameObject)
         {
             target = null;
         }

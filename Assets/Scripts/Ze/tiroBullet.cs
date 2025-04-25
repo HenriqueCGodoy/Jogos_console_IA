@@ -24,7 +24,7 @@ public class tiroBullet : MonoBehaviour
     void FixedUpdate()
     {
         
-        if ( Input.GetKey(KeyCode.JoystickButton5) || Input.GetKey(KeyCode.Space)  && ( currentTime >= ataqueTime ) )
+        if ( (Input.GetKey(KeyCode.JoystickButton5) || Input.GetKey(KeyCode.Space))  && ( currentTime >= ataqueTime ) )
         {
             Fire();
             currentTime = 0;                        

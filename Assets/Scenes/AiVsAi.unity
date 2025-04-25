@@ -528,6 +528,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1864,6 +1872,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1925,6 +1941,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2250,6 +2274,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2637,6 +2669,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3066,6 +3106,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3561,6 +3609,14 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 2067364448}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: targetTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566608333147744550, guid: 5d291eaa2bdc44c418b0935c089da749, type: 3}
+      propertyPath: 'targetTags.Array.data[0]'
+      value: Inimigo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
