@@ -4,13 +4,14 @@ public class bullet : MonoBehaviour
 {
     private float bulletInimigoSpeed = 6.0f;
     private int bulletDamage = 1;
+    private float bulletLifeTime = 30.0f;
     private GameObject shooter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Adiciona velocidade a Bullet
         GetComponent<Rigidbody>().linearVelocity = transform.forward * bulletInimigoSpeed;
-        Destroy(gameObject, 30);
+        Destroy(gameObject, bulletLifeTime);
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,6 +34,11 @@ public class bullet : MonoBehaviour
     public void SetBulletDamage(int damage)
     {
         bulletDamage = damage;
+    }
+
+    public void SetBulletLifeTime(float time)
+    {
+        bulletLifeTime = time;
     }
 
     public void SetShooter(GameObject obj)

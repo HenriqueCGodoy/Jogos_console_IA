@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class menuFuncoes : MonoBehaviour
 {
-    [SerializeField] private String AiVsAiScene;
+    [SerializeField] private String scene;
     [SerializeField] private GameObject painelMenuPrincipal;
     [SerializeField] private GameObject painelMenuOpcoes;
     
-    public void AiVsAi()
+    public void Jogar()
     {
-        SceneManager.LoadScene(AiVsAiScene);
+        SceneManager.LoadScene(scene);
     }
 
     public void AbrirOpcoes()
