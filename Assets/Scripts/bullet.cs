@@ -10,7 +10,8 @@ public class bullet : MonoBehaviour
     void Start()
     {
         // Adiciona velocidade a Bullet
-        GetComponent<Rigidbody>().linearVelocity = transform.forward * bulletInimigoSpeed;
+        //GetComponent<Rigidbody>().linearVelocity = transform.forward * bulletInimigoSpeed;
+        SetBulletSpeed(bulletInimigoSpeed);
         Destroy(gameObject, bulletLifeTime);
     }
 

@@ -426,6 +426,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: tanque
       objectReference: {fileID: 0}
+    - target: {fileID: 7996481143206732356, guid: 3ee9516f2b8c4624ab17de0656627b8d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039971658058695533, guid: 3ee9516f2b8c4624ab17de0656627b8d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3498470062871152204, guid: 3ee9516f2b8c4624ab17de0656627b8d, type: 3}
     m_RemovedGameObjects: []
