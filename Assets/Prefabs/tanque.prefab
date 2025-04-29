@@ -379,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4369597326900756740}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.523033, z: -1.8909197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -485,7 +485,9 @@ GameObject:
   - component: {fileID: 843443833976243693}
   - component: {fileID: 6507143651108521567}
   - component: {fileID: 8039971658058695533}
-  - component: {fileID: 3498470062871152204}
+  - component: {fileID: 8118844652417334792}
+  - component: {fileID: 356928455830578652}
+  - component: {fileID: 3708435089245958152}
   m_Layer: 0
   m_Name: tanque
   m_TagString: Untagged
@@ -539,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
---- !u!114 &3498470062871152204
+--- !u!114 &8118844652417334792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -548,14 +550,65 @@ MonoBehaviour:
   m_GameObject: {fileID: 7996481143206732356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca554d478583f8e40835573664f952d3, type: 3}
+  m_Script: {fileID: 11500000, guid: ac8f51a7a53a41242b7f9aa60498bc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1455166434725585018, guid: c0c500f8616b1e046997cea677beb5ad, type: 3}
   bulletSpawn: {fileID: 6827233476470729051}
   bulletVida: 10
   bulletSpeed: 50
-  ataqueTime: 0.5
+  bulletDamage: 1
+  ataqueTime: 1
+  smokeParticlesPrefab: {fileID: 4238560212887557624, guid: a464a84975c0d014d9c1659be0778f6d, type: 3}
+  smokeParticleSpawn: {fileID: 6827233476470729051}
+--- !u!54 &356928455830578652
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996481143206732356}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &3708435089245958152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996481143206732356}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.99, y: 4.2, z: 14.12}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8690414576685493526
 GameObject:
   m_ObjectHideFlags: 0
