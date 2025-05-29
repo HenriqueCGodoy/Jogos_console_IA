@@ -36,11 +36,15 @@ public class vida : MonoBehaviour
     IEnumerator InvicibilityCoroutine()
     {
         isInvincible = true;
+        //Frescura começa
         Material gameObjectMaterial = gameObject.GetComponent<MeshRenderer>().material;
         Color origColor = gameObjectMaterial.color;
         gameObjectMaterial.color = Color.yellow;
+        //Frescura acaba
         yield return new WaitForSeconds(InvincibilityTime);
         isInvincible = false;
+        //Ferscura começa de novo
         gameObjectMaterial.color = origColor;
+        //Frescura acaba de novo
     }
 }

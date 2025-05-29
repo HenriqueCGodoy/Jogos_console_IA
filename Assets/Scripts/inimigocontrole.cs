@@ -4,13 +4,13 @@ using UnityEngine.Rendering;
 
 public class inimigocontrole : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private int damage = 15;
     [SerializeField] private float speed;
-    [SerializeField] private GameObject player;
+    //[SerializeField] private GameObject player;
     private NavMeshAgent agent;
-    private Rigidbody rb;
-    [SerializeField] float frontDetectionRange;
-    [SerializeField] float backDetectionRange;
+    //private Rigidbody rb;
+    //[SerializeField] float frontDetectionRange;
+    //[SerializeField] float backDetectionRange;
     private enum States { Walking, Attacking };
     [SerializeField] private States currentState;
     private enum Destinations { Player, Pos1, Pos2 };
@@ -22,7 +22,7 @@ public class inimigocontrole : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
 
         //Set speed to nav mesh component
